@@ -59,10 +59,8 @@ CREATE TABLE "links" (
 
 CREATE TABLE "movies_metadata" (
     "adult" boolean   NOT NULL,
-    "belongs_to_collection" varchar   NOT NULL,
     "budget" int   NOT NULL,
     "genres" varchar   NOT NULL,
-    "homepage" varchar   NOT NULL,
     "id" int   NOT NULL,
     "imdb_id" int   NOT NULL,
     "original_language" varchar   NOT NULL,
@@ -77,7 +75,6 @@ CREATE TABLE "movies_metadata" (
     "runtime" int   NOT NULL,
     "spoken_language" varchar   NOT NULL,
     "status" varchar   NOT NULL,
-    "tagline" varchar   NOT NULL,
     "title" varchar   NOT NULL,
     "video" boolean   NOT NULL,
     "vote_average" float   NOT NULL,
