@@ -7,7 +7,7 @@ CREATE TABLE "genome_scores" (
     "tagId" int   NOT NULL,
     "relevance" float   NOT NULL,
     CONSTRAINT "pk_genome_scores" PRIMARY KEY (
-        "tagId"
+        "tagId", "movieId"
      )
 );
 
