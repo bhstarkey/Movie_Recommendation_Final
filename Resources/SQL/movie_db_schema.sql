@@ -84,7 +84,10 @@ CREATE TABLE "movies_metadata" (
     "vote_count" int   NOT NULL,
     CONSTRAINT "pk_movies_metadata" PRIMARY KEY (
         "id"
-     )
+     ),
+    CONSTRAINT "uc_movies_metadata_imdb_id" UNIQUE (
+        "imdb_id"
+    )
 );
 
 CREATE TABLE "keywords" (
