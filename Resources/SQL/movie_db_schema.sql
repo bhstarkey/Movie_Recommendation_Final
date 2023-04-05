@@ -44,7 +44,7 @@ CREATE TABLE "movies" (
         "movieId"
      ),
     CONSTRAINT "uc_movies_title" UNIQUE (
-        "title"
+        "movieId"
     )
 );
 
@@ -100,9 +100,6 @@ CREATE TABLE "keywords" (
 
 ALTER TABLE "genome_scores" ADD CONSTRAINT "fk_genome_scores_movieId" FOREIGN KEY("movieId")
 REFERENCES "movies" ("movieId");
-
-ALTER TABLE "genome_tags" ADD CONSTRAINT "fk_genome_tags_tagId" FOREIGN KEY("tagId")
-REFERENCES "genome_scores" ("tagId");
 
 ALTER TABLE "tags" ADD CONSTRAINT "fk_tags_movieId" FOREIGN KEY("movieId")
 REFERENCES "movies" ("movieId");
