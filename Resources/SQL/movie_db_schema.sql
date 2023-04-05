@@ -13,7 +13,7 @@ CREATE TABLE "genome_scores" (
 
 CREATE TABLE "genome_tags" (
     "tagId" int   NOT NULL,
-    "tag" string   NOT NULL,
+    "tag" varchar   NOT NULL,
     CONSTRAINT "pk_genome_tags" PRIMARY KEY (
         "tagId"
      )
@@ -22,7 +22,7 @@ CREATE TABLE "genome_tags" (
 CREATE TABLE "tags" (
     "userId" int   NOT NULL,
     "movieId" int   NOT NULL,
-    "tag" string   NOT NULL,
+    "tag" varchar   NOT NULL,
     "timestamp" int   NOT NULL,
     CONSTRAINT "pk_tags" PRIMARY KEY (
         "movieId","tag"
@@ -38,8 +38,8 @@ CREATE TABLE "ratings" (
 
 CREATE TABLE "movies" (
     "movieId" int   NOT NULL,
-    "title" string   NOT NULL,
-    "genres" string   NOT NULL,
+    "title" varchar   NOT NULL,
+    "genres" varchar   NOT NULL,
     CONSTRAINT "pk_movies" PRIMARY KEY (
         "movieId"
      ),
@@ -59,26 +59,26 @@ CREATE TABLE "links" (
 
 CREATE TABLE "movies_metadata" (
     "adult" boolean   NOT NULL,
-    "belongs_to_collection" string   NOT NULL,
+    "belongs_to_collection" varchar   NOT NULL,
     "budget" int   NOT NULL,
-    "genres" string   NOT NULL,
-    "homepage" string   NOT NULL,
+    "genres" varchar   NOT NULL,
+    "homepage" varchar   NOT NULL,
     "id" int   NOT NULL,
     "imdb_id" int   NOT NULL,
-    "original_language" string   NOT NULL,
-    "original_title" string   NOT NULL,
-    "overview" string   NOT NULL,
+    "original_language" varchar   NOT NULL,
+    "original_title" varchar   NOT NULL,
+    "overview" varchar   NOT NULL,
     "popularity" float   NOT NULL,
-    "poster_path" string   NOT NULL,
-    "production_companies" string   NOT NULL,
-    "production_countries" string   NOT NULL,
+    "poster_path" varchar   NOT NULL,
+    "production_companies" varchar   NOT NULL,
+    "production_countries" varchar   NOT NULL,
     "release_date" date   NOT NULL,
     "revenue" int   NOT NULL,
     "runtime" int   NOT NULL,
-    "spoken_language" string   NOT NULL,
-    "status" string   NOT NULL,
-    "tagline" string   NOT NULL,
-    "title" string   NOT NULL,
+    "spoken_language" varchar   NOT NULL,
+    "status" varchar   NOT NULL,
+    "tagline" varchar   NOT NULL,
+    "title" varchar   NOT NULL,
     "video" boolean   NOT NULL,
     "vote_average" float   NOT NULL,
     "vote_count" int   NOT NULL,
@@ -89,7 +89,7 @@ CREATE TABLE "movies_metadata" (
 
 CREATE TABLE "keywords" (
     "id" int   NOT NULL,
-    "keywords" string   NOT NULL,
+    "keywords" varchar   NOT NULL,
     CONSTRAINT "pk_keywords" PRIMARY KEY (
         "id"
      )
