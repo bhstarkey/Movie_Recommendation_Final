@@ -11,6 +11,7 @@ The data was relatively clean, with a couple exceptions. There were a couple col
 _____________________________________
 For movie recommendations, the most common model used is KMeans for grouping our dataset into clusters. We also toyed with implementing a DBSCAN model for detecting outliers. KNearestNeighbors was used in tandem with DBSCAN to help optimize the model. 
 
+
 ### Resources
 _____________________________________
 - MovieLens Dataset
