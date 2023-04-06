@@ -64,7 +64,6 @@ CREATE TABLE "movies_metadata" (
     "imdb_id" int   NOT NULL,
     "original_language" varchar,
     "original_title" varchar   NOT NULL,
-    "overview" varchar,
     "popularity" float,
     "poster_path" varchar,
     "release_date" date,
