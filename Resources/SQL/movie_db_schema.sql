@@ -21,7 +21,7 @@ CREATE TABLE "tags" (
     "tag" varchar   NOT NULL,
     "timestamp" int   NOT NULL,
     CONSTRAINT "pk_tags" PRIMARY KEY (
-        "movieId"
+        "userId","movieId","tag"
      )
 );
 
@@ -47,7 +47,7 @@ CREATE TABLE "movies" (
 CREATE TABLE "links" (
     "movieId" int   NOT NULL,
     "imdbId" int   NOT NULL,
-    "tmdbId" int   NOT NULL,
+    "tmdbId" int,
     CONSTRAINT "pk_links" PRIMARY KEY (
         "movieId"
      )
@@ -76,14 +76,6 @@ CREATE TABLE "movies_metadata" (
     CONSTRAINT "uc_movies_metadata_imdb_id" UNIQUE (
         "imdb_id"
     )
-);
-
-CREATE TABLE "keywords" (
-    "id" int   NOT NULL,
-    "keywords" varchar   NOT NULL,
-    CONSTRAINT "pk_keywords" PRIMARY KEY (
-        "id"
-     )
 );
 
 CREATE TABLE "genres_encoded" (
