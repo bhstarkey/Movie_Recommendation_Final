@@ -1,9 +1,13 @@
-﻿CREATE TABLE "genome_scores" (
+﻿-- Exported from QuickDBD: https://www.quickdatabasediagrams.com/
+-- NOTE! If you have used non-SQL datatypes in your design, you will have to change these here.
+
+
+CREATE TABLE "genome_scores" (
     "movieId" int   NOT NULL,
     "tagId" int   NOT NULL,
     "relevance" float   NOT NULL,
     CONSTRAINT "pk_genome_scores" PRIMARY KEY (
-        "movieId","tagId"
+        "tagId", "movieId"
      )
 );
 
@@ -21,7 +25,7 @@ CREATE TABLE "tags" (
     "tag" varchar   NOT NULL,
     "timestamp" int   NOT NULL,
     CONSTRAINT "pk_tags" PRIMARY KEY (
-        "movieId"
+        "movieId","tag"
      )
 );
 
@@ -29,10 +33,7 @@ CREATE TABLE "ratings" (
     "userId" int   NOT NULL,
     "movieId" int   NOT NULL,
     "rating" money   NOT NULL,
-    "timestamp" int   NOT NULL,
-    CONSTRAINT "pk_ratings" PRIMARY KEY (
-        "userId","movieId"
-     )
+    "timestamp" int   NOT NULL
 );
 
 CREATE TABLE "movies" (
@@ -41,7 +42,10 @@ CREATE TABLE "movies" (
     "genres" varchar   NOT NULL,
     CONSTRAINT "pk_movies" PRIMARY KEY (
         "movieId"
-     )
+     ),
+    CONSTRAINT "uc_movies_title" UNIQUE (
+        "movieId"
+    )
 );
 
 CREATE TABLE "links" (
@@ -54,19 +58,19 @@ CREATE TABLE "links" (
 );
 
 CREATE TABLE "movies_metadata" (
-    "index" int   NOT NULL,
     "adult" boolean   NOT NULL,
     "budget" int   NOT NULL,
     "id" int   NOT NULL,
     "imdb_id" int   NOT NULL,
     "original_language" varchar,
+    "original_title" varchar   NOT NULL,
     "popularity" float,
     "poster_path" varchar,
     "release_date" date,
     "revenue" float,
     "runtime" float,
     "status" varchar,
-    "title" varchar   NOT NULL,
+    "title" varchar,
     "video" boolean,
     "vote_average" float,
     "vote_count" float,
@@ -86,29 +90,21 @@ CREATE TABLE "keywords" (
      )
 );
 
-CREATE TABLE "genres_encoded" (
-    "index" int   NOT NULL,
-    "genre_Action" float   NOT NULL,
-    "genre_Adventure" float   NOT NULL,
-    "genre_Animation" float   NOT NULL,
-    "genre_Comedy" float   NOT NULL,
-    "genre_Crime" float   NOT NULL,
-    "genre_Documentary" float   NOT NULL,
-    "genre_Drama" float   NOT NULL,
-    "genre_Family" float   NOT NULL,
-    "genre_Fantasy" float   NOT NULL,
-    "genre_Foreign" float   NOT NULL,
-    "genre_History" float   NOT NULL,
-    "genre_Horror" float   NOT NULL,
-    "genre_Music" float   NOT NULL,
-    "genre_Mystery" float   NOT NULL,
-    "genre_Romance" float   NOT NULL,
-    "genre_Science_Fiction" float   NOT NULL,
-    "genre_TV_Movie" float   NOT NULL,
-    "genre_Thriller" float   NOT NULL,
-    "genre_War" float   NOT NULL,
-    "genre_Western" float   NOT NULL,
-    CONSTRAINT "pk_genres_encoded" PRIMARY KEY (
-        "index"
-     )
-);
+ALTER TABLE "genome_scores" ADD CONSTRAINT "fk_genome_scores_movieId" FOREIGN KEY("movieId")
+REFERENCES "movies" ("movieId");
+
+ALTER TABLE "tags" ADD CONSTRAINT "fk_tags_movieId" FOREIGN KEY("movieId")
+REFERENCES "movies" ("movieId");
+
+ALTER TABLE "ratings" ADD CONSTRAINT "fk_ratings_movieId" FOREIGN KEY("movieId")
+REFERENCES "movies" ("movieId");
+
+ALTER TABLE "links" ADD CONSTRAINT "fk_links_movieId" FOREIGN KEY("movieId")
+REFERENCES "movies" ("movieId");
+
+ALTER TABLE "links" ADD CONSTRAINT "fk_links_imdbId" FOREIGN KEY("imdbId")
+REFERENCES "movies_metadata" ("imdb_id");
+
+ALTER TABLE "keywords" ADD CONSTRAINT "fk_keywords_id" FOREIGN KEY("id")
+REFERENCES "movies_metadata" ("id");
+
