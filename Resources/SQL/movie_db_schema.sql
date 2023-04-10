@@ -1,56 +1,11 @@
-﻿CREATE TABLE "genome_scores" (
-    "movieId" int   NOT NULL,
-    "tagId" int   NOT NULL,
-    "relevance" float   NOT NULL,
-    CONSTRAINT "pk_genome_scores" PRIMARY KEY (
-        "movieId","tagId"
-     )
-);
-
-CREATE TABLE "genome_tags" (
-    "tagId" int   NOT NULL,
-    "tag" varchar   NOT NULL,
-    CONSTRAINT "pk_genome_tags" PRIMARY KEY (
-        "tagId"
-     )
-);
-
-CREATE TABLE "tags" (
-    "userId" int   NOT NULL,
-    "movieId" int   NOT NULL,
-    "tag" varchar   NOT NULL,
-    "timestamp" int   NOT NULL,
-    CONSTRAINT "pk_tags" PRIMARY KEY (
-        "userId","movieId","tag"
-     )
-);
-
-CREATE TABLE "ratings" (
-    "userId" int   NOT NULL,
-    "movieId" int   NOT NULL,
-    "rating" money   NOT NULL,
-    "timestamp" int   NOT NULL,
-    CONSTRAINT "pk_ratings" PRIMARY KEY (
-        "userId","movieId"
-     )
-);
-
 CREATE TABLE "movies" (
     "movieId" int   NOT NULL,
     "title" varchar   NOT NULL,
     "genres" varchar   NOT NULL,
-    CONSTRAINT "pk_movies" PRIMARY KEY (
-        "movieId"
-     )
-);
 
-CREATE TABLE "links" (
-    "movieId" int   NOT NULL,
-    "imdbId" int   NOT NULL,
-    "tmdbId" int,
-    CONSTRAINT "pk_links" PRIMARY KEY (
+    CONSTRAINT "uc_movies_movieId" UNIQUE (
         "movieId"
-     )
+    )
 );
 
 CREATE TABLE "movies_metadata" (
@@ -76,6 +31,61 @@ CREATE TABLE "movies_metadata" (
     CONSTRAINT "uc_movies_metadata_imdb_id" UNIQUE (
         "imdb_id"
     )
+);
+
+CREATE TABLE "genome_scores" (
+    "movieId" int   NOT NULL,
+    "tagId" int   NOT NULL,
+    "relevance" float   NOT NULL,
+    CONSTRAINT "pk_genome_scores" PRIMARY KEY (
+        "movieId","tagId"
+     )
+);
+
+CREATE TABLE "tags" (
+    "userId" int   NOT NULL,
+    "movieId" int   NOT NULL,
+    "tag" varchar   NOT NULL,
+    "timestamp" int   NOT NULL,
+    CONSTRAINT "pk_tags" PRIMARY KEY (
+        "userId","movieId","tag"
+     )
+);
+
+CREATE TABLE "genome_tags" (
+    "tagId" int   NOT NULL,
+    "tag" varchar   NOT NULL,
+    CONSTRAINT "pk_genome_tags" PRIMARY KEY (
+        "tagId"
+     )
+);
+
+CREATE TABLE "ratings" (
+    "userId" int   NOT NULL,
+    "movieId" int   NOT NULL,
+    "rating" money   NOT NULL,
+    "timestamp" int   NOT NULL,
+    CONSTRAINT "pk_ratings" PRIMARY KEY (
+        "userId","movieId"
+     )
+);
+
+CREATE TABLE "links" (
+    "movieId" int   NOT NULL,
+    "imdbId" int   NOT NULL,
+    "tmdbId" int,
+    CONSTRAINT "pk_links" PRIMARY KEY (
+        "movieId"
+     )
+);
+
+
+CREATE TABLE "keywords" (
+    "id" int   NOT NULL,
+    "keywords" varchar   NOT NULL,
+    CONSTRAINT "pk_keywords" PRIMARY KEY (
+        "id"
+     )
 );
 
 CREATE TABLE "genres_encoded" (
