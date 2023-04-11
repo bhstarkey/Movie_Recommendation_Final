@@ -36,6 +36,7 @@ SELECT mm.index,
 	ge.genre_western
 INTO movies_merged	
 FROM movies_metadata as mm
-LEFT JOIN genres_encoded as ge ON mm.index = ge.index;
+LEFT JOIN genres_encoded as ge
+ON mm.index = ge.index;
 
 SELECT * FROM movies_merged
