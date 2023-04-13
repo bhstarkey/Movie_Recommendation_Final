@@ -80,14 +80,6 @@ CREATE TABLE "links" (
 );
 
 
-CREATE TABLE "keywords" (
-    "id" int   NOT NULL,
-    "keywords" varchar   NOT NULL,
-    CONSTRAINT "pk_keywords" PRIMARY KEY (
-        "id"
-     )
-);
-
 CREATE TABLE "genres_encoded" (
     "index" int   NOT NULL,
     "genre_action" float   NOT NULL,
