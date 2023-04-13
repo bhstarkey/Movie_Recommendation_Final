@@ -1,4 +1,11 @@
 # Movie Recommendation
+<br />
+
+### Purpose
+_____________________________________
+We chose to build a model to recommend movies that you may never have heard of. We collected data and filtered by the revenue and budget to find lesser known movies to recommend. We wanted to offer a service that instead of showing all of the same movies, we wanted to recommend ones you may have never heard of. 
+
+<br />
 
 ### Our ETL Process
 _____________________________________
@@ -12,16 +19,19 @@ Those were all dropped. The most difficult part of the cleaning was extracting t
 
 Once the data was to this stage, we imported it into an AWS Database. This had a couple challenges because of the nature of the data. Several of the tables had full sentences, quotes, apostrophes, etc. so the standard importing characters could not be used. I kept the comma as the delimiter as we were working with CSVs, but changed the quote to '^' and the escape to '*' as neither were used in the datasets. After we successfully imported the data into the database, we joined the genres table with the movies metadata table. After getting my group members connected to the database, it was ready to move onto the next stage.
 
+<br />
 
 ### Our Machine Learning Process
 _____________________________________
 For movie recommendations, the most common model used is KMeans for grouping our dataset into clusters. We also toyed with implementing a DBSCAN model for detecting outliers. KNearestNeighbors was used in tandem with DBSCAN to help optimize the model. 
 
+<br />
 
 ### With More Time
 _____________________________________
 With less than a month to come up with then execute a project that would reflect everything we learned, there were several things that we wanted to explore more with our project given the time. One of the datasets available to us had several keywords for each movie. We could have improved the functionality and usability of our model by creating a kind of search engine for the movies, where given the users input of descriptions of movies they like, we would recommend them a movie. We also would have liked to add a way for them to rate other movies and based off of their ratings recommend similar. Another feature we would have like to add would allow a user to customize their recommendations more by filtering out or including foreign films, animated films, or by release date.
 
+<br />
 
 ### Resources
 _____________________________________
