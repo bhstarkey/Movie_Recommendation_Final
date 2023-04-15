@@ -1,4 +1,6 @@
 console.log('working')
+const url = 
+loadCSV();
 var tbody = d3.select("tbody");
 function buildTable(data) {
     tbody.html("");
@@ -10,97 +12,76 @@ function buildTable(data) {
         });
     });
 }
-var genre = ['action','adventure','animation','comedy','crime','documentary','drama','family','fantasy','history','horror','music','mystery','romance','science fiction','tv movie','thriller','war','western'];
-var genreValue = [];
-d3.selectAll("input").on("click", function() {
-  if (this.input.checked) {
-    console.log("checked");
+
+function loadCSV() {
+  d3.csv("assets/resources/movie_test.csv").then((data) => {
+    var checked = d3.selectAll(".myCheckbox");
+    // var genreCol = data.map((row) => row.genre.split(" "));
+    if (checked.property("checked")) {buildFilters(), console.log("checked")}
+    else {buildTable(data), "unchecked"};
+    
+    function buildFilters() {
+      var trueFilter = data.filter((x) => x.genre.includes(genreFilters));
+      var falseFilter = data.filter((x) => !x.genre.includes(genreFilters));
+      if (trueFilter) {buildTable(trueFilter),console.log("got it", trueFilter);}
+      if (falseFilter) {console.log("nope", falseFilter);}
+    }
+      // var filteredData = data.filter((row) => row.genre.includes(genreFilters));
+      // console.log(filteredData);
+
+    function rebuildTable() {
+      var newGenreCol = {};
+      var genre = data.forEach((x) => console.log(Object.keys(x)[1]))
+      console.log(genre);
+    }
+
+    rebuildTable();
+
+    var genreFilters = [];
+    d3.selectAll(".myCheckbox").on("change", function() {
+      if (this.checked) {
+        genreFilters.push(this.id);
+        console.log(genreFilters);
+        buildFilters();
+      }
+      else {let index = genreFilters.indexOf(this.id);
+          if (index > -1) {
+            genreFilters.splice(index, 1);
+          };
+          console.log(genreFilters);
+          buildFilters();
+      };
+  // let filterData = data.filter((x,i) => {
+  //   x.genre.split(" ")[i] === genreFilters[i]});
+  //   console.log(x.genre.split(" ")[i]);
+  //   console.log(genreFilters[i]);
+  //   console.log(filterData)
+        });
+      
+      
+    
+    
+})};
+
+var genreFilters = [];
+d3.selectAll(".myCheckbox").on("change", function() {
+  if (this.checked) {
+    genreFilters.push(this.id);
+    console.log(genreFilters);
+    buildFilters();
   }
-  else {
-    console.log("unchecked");
-  }
-});
-// var checkboxID = checkboxActive.attr("id");
-// var checkboxActive = myCheckbox.property(".active", true).attr("id");
-function updateTable(data) {
-      data.filter((x) => {
-      return x.genre.includes(genreValue);
-    });
+  else {let index = genreFilters.indexOf(this.id);
+      if (index > -1) {
+        genreFilters.splice(index, 1);
+      };
+      console.log(genreFilters);
+      loadCSV();
   };
-  
+  // let filterData = data.filter((x,i) => {
+  //   x.genre.split(" ")[i] === genreFilters[i]});
+  //   console.log(x.genre.split(" ")[i]);
+  //   console.log(genreFilters[i]);
+  //   console.log(filterData)
+  });
 
-  d3.csv("assets/resources/movie_test.csv").then(function(data) {
 
-    buildTable(data);
-    console.log(genreValue);
-});
-    // genreFilter.sort((a, b) => {
-    //   return d3.descending(a.vote_average, b.vote_average)
-    // });
-//   })
-// })
-// V2______________________________________________________________
-// var checkboxChange = d3.selectAll(".myCheckbox");
-// var genreFilters = [];
-// function updateFilter() {
-//   // var genre = ['action','adventure','animation','comedy','crime','documentary','drama','family','fantasy','history','horror','music','mystery','romance','science fiction','tv movie','thriller','war','western'];
-//   let elementChanged = checkboxChange.property("checked");
-//   // let elementValue = elementChanged.property("value");
-//   let elementID = elementChanged.attr("id");
-//   if (elementChanged) {
-//     genreFilters.push(elementID)
-//   } else {
-//     delete genreFilters.pop(elementID);
-//   };
-//   filterTable();
-// };
-
-// function update() {
-//   if(d3.select("#myCheckbox").property("checked")) {
-//     filterByGenre(buildTable(data));
-// } else {
-//     buildTable(data);
-// }}
-
-// function filterTable() {
-//   if (genreFilters.length > 0) {
-//     filterData.filter((x) => {
-//     return x.genre.includes(genre)})}
-//       else {buildTable(data)
-//         }
-// };
-
-//   // START of function for filtering table by genre
-//______________________________________________________________
-
-// d3.csv("assets/resources/movie_df_for_website.csv").then(function(data) {
-//     var headerRow = Object.keys(data[0]);
-//     var action = 'action'
-//     var genreFilter = data.filter((x) => {
-//        return x.genre.includes(action);
-//     });
-//     genreFilter.sort((a, b) => {
-//         return d3.descending(a.vote_average, b.vote_average)
-//     });
-//     console.log(headerRow);
-//     console.log(genreFilter)
-//     console.log(data[0]);
-// }));
-  // function init() {
-//     var selector = d3.select("#selDataset");
-//     d3.json("Website/assets/resources/website_json.json").then((data) => {
-//       var genreNames = data.genre;
-//       genreNames.forEach((sample) => {
-//         selector
-//           .append("option")
-//           .text(sample)
-//           .property("value", sample);
-//       });
-  
-//       // Use the first sample from the list to build the initial plots
-//       var firstGenre = genreNames[0];
-//       buildCharts(firstGenre);
-//       buildMetadata(firstGenre);
-//     });
-//   }
-//   init();
