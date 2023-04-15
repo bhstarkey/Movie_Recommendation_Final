@@ -197,66 +197,66 @@
               <div class="col-md-2 list-group-table-filter">
                 <!-- <ul class="list-group-table-filter"> -->
                 <h3 class="filter-header">Genre</h3>
-                <div class="btn-group-toggle" data-toggle="checkbox">
+                <div class="btn-group btn-group-toggle" data-toggle="radio">
                     <label for="action" class="btn btn-secondary">
-                        <input type="checkbox" class="myCheckbox" id="action" autocomplete="off">Action
+                        <input type="radio" name="genre" name="genre" class="myCheckbox" id="action" autocomplete="off">Action
                     </label>
                     <label for="adventure" class="btn btn-secondary">
-                        <input type="checkbox" class="myCheckbox" id="adventure" autocomplete="off"> Adventure
+                        <input type="radio" name="genre" class="myCheckbox" id="adventure" autocomplete="off"> Adventure
                     </label>
                     <label for="animation" class="btn btn-secondary">
-                        <input type="checkbox" class="myCheckbox" id="animation" autocomplete="off"> Animation
+                        <input type="radio" name="genre" class="myCheckbox" id="animation" autocomplete="off"> Animation
                     </label>
                     <label class="btn btn-secondary">
-                        <input type="checkbox" class="myCheckbox" id="comedy" autocomplete="off"> Comedy
+                        <input type="radio" name="genre" class="myCheckbox" id="comedy" autocomplete="off"> Comedy
                     </label>
                     <label class="btn btn-secondary">
-                        <input type="checkbox" class="myCheckbox" id="crime" autocomplete="off"> Crime
+                        <input type="radio" name="genre" class="myCheckbox" id="crime" autocomplete="off"> Crime
                     </label>
                     <label class="btn btn-secondary">
-                        <input type="checkbox" class="myCheckbox" id="documentary" autocomplete="off"> Documentary
+                        <input type="radio" name="genre" class="myCheckbox" id="documentary" autocomplete="off"> Documentary
                     </label>
                     <label class="btn btn-secondary">
-                        <input type="checkbox" class="myCheckbox" id="drama" autocomplete="off"> Drama
+                        <input type="radio" name="genre" class="myCheckbox" id="drama" autocomplete="off"> Drama
                     </label>
                     <label class="btn btn-secondary">
-                        <input type="checkbox" class="myCheckbox" id="family" autocomplete="off"> Family
+                        <input type="radio" name="genre" class="myCheckbox" id="family" autocomplete="off"> Family
                     </label>
                     <label class="btn btn-secondary">
-                        <input type="checkbox" class="myCheckbox" id="fantasy" autocomplete="off"> Fantasy
+                        <input type="radio" name="genre" class="myCheckbox" id="fantasy" autocomplete="off"> Fantasy
                     </label>
                     <label class="btn btn-secondary">
-                        <input type="checkbox" class="myCheckbox" id="foreign" autocomplete="off"> Foreign
+                        <input type="radio" name="genre" class="myCheckbox" id="foreign" autocomplete="off"> Foreign
                     </label>
                     <label class="btn btn-secondary">
-                        <input type="checkbox" class="myCheckbox" id="history" autocomplete="off"> History
+                        <input type="radio" name="genre" class="myCheckbox" id="history" autocomplete="off"> History
                     </label>
                     <label class="btn btn-secondary">
-                        <input type="checkbox" class="myCheckbox" id="horror" autocomplete="off"> Horror
+                        <input type="radio" name="genre" class="myCheckbox" id="horror" autocomplete="off"> Horror
                     </label>
                     <label class="btn btn-secondary">
-                        <input type="checkbox" class="myCheckbox" id="music" autocomplete="off"> Music
+                        <input type="radio" name="genre" class="myCheckbox" id="music" autocomplete="off"> Music
                     </label>
                     <label class="btn btn-secondary">
-                        <input type="checkbox" class="myCheckbox" id="mystery" autocomplete="off"> Mystery
+                        <input type="radio" name="genre" class="myCheckbox" id="mystery" autocomplete="off"> Mystery
                     </label>
                     <label class="btn btn-secondary">
-                        <input type="checkbox" class="myCheckbox" id="romance" autocomplete="off"> Romance
+                        <input type="radio" name="genre" class="myCheckbox" id="romance" autocomplete="off"> Romance
                     </label>
                     <label class="btn btn-secondary">
-                        <input type="checkbox" class="myCheckbox" id="science-fiction" autocomplete="off"> Science-Fiction
+                        <input type="radio" name="genre" class="myCheckbox" id="science-fiction" autocomplete="off"> Science-Fiction
                     </label>
                     <label class="btn btn-secondary">
-                        <input type="checkbox" class="myCheckbox" id="tv-movie" autocomplete="off"> TV Movie
+                        <input type="radio" name="genre" class="myCheckbox" id="tv-movie" autocomplete="off"> TV Movie
                     </label>
                     <label class="btn btn-secondary">
-                        <input type="checkbox" class="myCheckbox" id="thriller" autocomplete="off"> Thriller
+                        <input type="radio" name="genre" class="myCheckbox" id="thriller" autocomplete="off"> Thriller
                     </label>
                     <label class="btn btn-secondary">
-                        <input type="checkbox" class="myCheckbox" id="war" autocomplete="off"> War
+                        <input type="radio" name="genre" class="myCheckbox" id="war" autocomplete="off"> War
                     </label>
                     <label class="btn btn-secondary">
-                        <input type="checkbox" class="myCheckbox" id="western" autocomplete="off"> Western
+                        <input type="radio" name="genre" class="myCheckbox" id="western" autocomplete="off"> Western
                     </label>
                 </ul>
                 </div>
@@ -690,8 +690,9 @@
     <!-- START: Scripts -->
     <script src="https://d3js.org/d3.v7.min.js"></script>      
     <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
-    <!-- <script>$('.btn-group-toggle').button('toggle');</script> -->
-    <script src="assets/js/charts.js"></script>
+    <script>$('.btn-group-toggle').button('toggle');</script>
+    <script>$('.btn-group-toggle').button('dispose')</script>
+    <script src="assets/js/charts_alt.js"></script>
     <script src="assets/js/combined.js"></script>
     
     <!-- END: Scripts -->

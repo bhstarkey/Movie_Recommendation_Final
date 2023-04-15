@@ -1,5 +1,6 @@
 console.log('working')
-const url = 
+const url = "https://github.com/bhstarkey/Movie_Recommendation_Final/blob/main/Website_Rough_Code/Website/assets/resources/movie_test.csv"
+localFile = "assets/resources/movie_test.csv"
 loadCSV();
 var tbody = d3.select("tbody");
 function buildTable(data) {
@@ -14,9 +15,9 @@ function buildTable(data) {
 }
 
 function loadCSV() {
-  d3.csv("assets/resources/movie_test.csv").then((data) => {
+  d3.csv(localFile).then((data) => {
     var checked = d3.selectAll(".myCheckbox");
-    // var genreCol = data.map((row) => row.genre.split(" "));
+    var genreCol = data.map((row) => row.genre.split(" "));
     if (checked.property("checked")) {buildFilters(), console.log("checked")}
     else {buildTable(data), "unchecked"};
     
@@ -28,14 +29,6 @@ function loadCSV() {
     }
       // var filteredData = data.filter((row) => row.genre.includes(genreFilters));
       // console.log(filteredData);
-
-    function rebuildTable() {
-      var newGenreCol = {};
-      var genre = data.forEach((x) => console.log(Object.keys(x)[1]))
-      console.log(genre);
-    }
-
-    rebuildTable();
 
     var genreFilters = [];
     d3.selectAll(".myCheckbox").on("change", function() {
