@@ -23,7 +23,7 @@ Once the data was to this stage, we imported it into an AWS Database. This had a
 
 ### Our Machine Learning Process
 _____________________________________
-For movie recommendations, the most common model used is KMeans for grouping our dataset into clusters. We also toyed with implementing a DBSCAN model for detecting outliers. KNearestNeighbors was used in tandem with DBSCAN to help optimize the model. 
+For movie recommendations, the most common model used is KMeans for grouping our dataset into clusters. This was by far the most popular model that I saw recommended over several articles. Despite this, I tried out a few other models to gauge performance.  
 
 <br />
 
