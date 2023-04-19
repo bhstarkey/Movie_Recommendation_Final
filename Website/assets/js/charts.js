@@ -1,6 +1,6 @@
 console.log('working')
 const url = "https://github.com/bhstarkey/Movie_Recommendation_Final/blob/main/Website_Rough_Code/Website/assets/resources/movie_test.csv"
-localFile = "assets/resources/movie_test.csv"
+localFile = "assets/resources/movie_df_for_website.csv"
 loadCSV();
 var tbody = d3.select("tbody");
 function buildTable(data) {
@@ -22,10 +22,10 @@ function loadCSV() {
     else {buildTable(data), "unchecked"};
     
     function buildFilters() {
-      console.log(data);
+      // console.log(data);
       let trueFilter = [];
       let temp = [...data];
-      console.log(temp);
+      // console.log(temp);
       genreFilters.forEach(attr => { // Iterate through genre filters.
         //console.log(attr);
         temp = temp.filter(obj => obj.genre.includes(attr)) // Filter on each genre chosen.
@@ -56,19 +56,3 @@ function loadCSV() {
         });
       
 })};
-
-var genreFilters = [];
-d3.selectAll(".myCheckbox").on("change", function() {
-  if (this.checked) {
-    genreFilters.push(this.id);
-    console.log(genreFilters);
-    buildFilters();
-  }
-  else {let index = genreFilters.indexOf(this.id);
-      if (index > -1) {
-        genreFilters.splice(index, 1);
-      };
-      console.log(genreFilters);
-      loadCSV();
-  };
-  });
