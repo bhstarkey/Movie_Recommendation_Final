@@ -46,7 +46,7 @@ _______________________________________________
 
 Next, I tried using the MeanShift model. This model is another centroid based algorithm that aims to find 'blobs' in the data, which it works by updating candidates for centroids to be the mean of points in a given region. Once the model was plotted, we can see that it performed alright in the dense region, but falls apart in the middle of our plot.
 _______________________________________________
-![MeanShift](https://github.com/bhstarkey/Movie_Recommendation_Final/blob/7007ff3fe651e27c00389454c06e90ab7dc3911a/Resources/Images/kmeans_3d.PNG)
+![MeanShift](https://github.com/bhstarkey/Movie_Recommendation_Final/blob/3c4d54d4a160ed6726e8e926f261fbba8d044cd8/Resources/Images/meanshift_plot.PNG)
 
 Lastly, I worked with the KMeans model. The KMeans model tries to separate data in n groups  of equal variance while trying to minimize its within-cluster sum-of-squares(inertia). I started out by plotting an elbow curve to determine the number of clusters to start with. 
 _______________________________________________
