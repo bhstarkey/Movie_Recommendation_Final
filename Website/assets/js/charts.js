@@ -1,6 +1,6 @@
 console.log('working')
 const url = "https://github.com/bhstarkey/Movie_Recommendation_Final/blob/main/Website_Rough_Code/Website/assets/resources/movie_test.csv"
-localFile = "assets/resources/movie_df_for_website.csv"
+localFile = "assets/resources/website_df_Final.csv"
 loadCSV();
 var tbody = d3.select("tbody");
 function buildTable(data) {
