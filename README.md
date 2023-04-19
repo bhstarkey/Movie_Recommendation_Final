@@ -30,8 +30,25 @@ After we successfully imported the data into the database, we joined the genres 
 
 ### Our Machine Learning Process
 _____________________________________
-For movie recommendations, the most common model used is KMeans for grouping our dataset into clusters. This was by far the most popular model that I saw recommended over several articles. Despite this, I tried out a few other models to gauge performance.  
+For movie recommendations, the most common model used is KMeans for grouping our dataset into clusters. This was by far the most popular model that I saw recommended over several articles. Despite this, I tried out a few other models to gauge performance. Before trainging models, there was a good deal of analysis that had to take place. Diving deeper into our data, I noticed there were several columns that needed some filtering. 
 
+The first column I took a look at was the 'Video' column. The title of the column caught my attention, since the dataset was supposed to only contain movies. I filtered the column by True and found out our dataset contained a small amount of documentaries, tv shows, and even a video game cut scene. I filtered the 'Video' column to just include the rows containing False, then dropped the column.
+
+The next column I took a look at was the 'Status' column. I wondered why the column existed as I assumed the data set only contained released movies. Upon inspection, the 'Status' column contained a few hundred rows of non-released movies. I filtered by only released movies, then dropped the column.
+
+Afterwards, I dropped all columns that would not be helpful for machine learning, such as the 'Title', 'Id', and 'Imdb_id' columns. I then changed the data type of the 'Adult' column, which was a boolean, to object for encoding. The last thing to do with the columns was encode the 'Adult' and 'Original_Language' columns using Pandas.get_dummies() method. 
+
+Finally, I checked the dataframe for null values and found that there were a good deal of null values in the split up genre columns. To remedy this, I called .fillna(0) to fill the null values with 0. 
+
+For the machine learning portion, as stated earlier, I knew that K-Means was what most popular model to use for categorizing movies. Despite this fact, I researched other clustering models that could've been useful. I first started off with the DBSCAN which stands for Density-Based Spatial Clustering for Application with Noise. This model both excels at finding outliers as well as clustering nested data. Unfortunately for us, we quickly realized the shape of our data would affect how our models performed. Our data was largely skewed in one direction in the shape of a column, with a much smaller portion of the data set spreading out from there. This will be explained later.
+
+Next, I tried using the MeanShift model. This model is another centroid based algorithm that aims to find 'blobs' in the data, which it works by updating candidates for centroids to be the mean of points in a given region. Once the model was plotted, we can see that it performed alright in the dense region, but falls apart in the middle of our plot.
+
+Lastly, I worked with the KMeans model. The KMeans model tries to separate data in n groups  of equal variance while trying to minimize its within-cluster sum-of-squares(inertia). I started out by plotting an elbow curve to determine the number of clusters to start with. 
+
+I then used that number on the KMeans model and plotted the results. This model performed the best, by far, compared to our other options. Had the data been less skewed, the plot might've looked even better. 
+
+We used the labels created by our KMeans model to be used for grouping in our next section.
 <br />
 
 ### With More Time
@@ -55,7 +72,8 @@ _____________________________________
     - Libraries used:
         - pandas
         - re (regex)
-        - sklearn preprocessing
+        - sklearn
+        - plotly.express
+        - hvplot.pandas
         - ast's literal_eval
-        - numpy
 - AWS Postgres SQL Database
