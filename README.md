@@ -26,6 +26,24 @@ _____________________________________
 For movie recommendations, the most common model used is KMeans for grouping our dataset into clusters. We also toyed with implementing a DBSCAN model for detecting outliers. KNearestNeighbors was used in tandem with DBSCAN to help optimize the model. 
 
 <br />
+### Our Web Application
+_____________________________________
+#### Preprocessing
+_____________________________________
+After the model was successfully built, the next step was to prepare the results to be visualized publically.  
+We first started by adding back the `['Release_Date']` column, as well as drop all columns that may not be useful for the user. Then the genre columns were un-encoded and added to a single column. The entire dataset was filtered only include the group `0`, which we determined to be most in line the goal of our model.  
+_____________________________________
+#### Building the Web Application  
+_____________________________________
+For the web application, we found a pre-built `html` and `css` template with a free license that we could modify to suit our needs without having to build from the ground up. After tailoring the website to our project, we built a table in `html` that would house the data output from the model, as well as a column of radio buttons that would allow the user to filter by genre.  
+![Alt text](Resources/Images/html_table.png)
+_____________________________________
+![Alt text](Resources/Images/html_buttons.png)
+_____________________________________
+We then built a JavaScript file that would allow the radio buttons to filter by genre. To do this, we used the `d3.js` library to build the table from the model's output .csv file. Every button had the corresponding genre as its `id`, so when the button was clicked, the `d3.js` code would add the corresponding `id` to a list and trigger a function that would filter the table by that genre. The function activated any time a button was either *"checked"* or *"unchecked"*, and would run an `if/else` statement to check if the genre in the list built from the button id's was also in the genre column of the table rows. If the genre of the films matched the `id` (and therefore genres) of the buttons pressed, the film would be displayed.  
+![Alt text](Resources/Images/JavaScript_genreFilter.png)
+_____________________________________
+By far the biggest challenge was to filter multiple genres. Eventually (with outside help) we were able to get it to work.<br>
 
 ### With More Time
 _____________________________________
